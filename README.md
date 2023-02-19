@@ -1,1 +1,1 @@
-# -JNTUK-E-Certificates
+# JNTUK-E-Certificates
