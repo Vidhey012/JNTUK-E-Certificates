@@ -35,6 +35,7 @@
         window.onload = function onStartup() //------------------------------------------------------>>executed when page is loaded
             {
 			    currentPage=localStorage.getItem("currentPage");
+				if(currentPage==null){currentPage="indexMain.html";}
                 document.getElementById("Frame").src = currentPage;
             }
     </script>
