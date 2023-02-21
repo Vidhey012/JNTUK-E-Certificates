@@ -208,7 +208,6 @@
 					showConfirmButton: false,
 				}).then(() => {
 					localStorage.setItem("username", " ");
-					localStorage.setItem("currentPage", "indexMain.html");
 					window.location.assign("index.html");
 				});
 			} else if(result.dismiss === Swal.DismissReason.cancel) {}
