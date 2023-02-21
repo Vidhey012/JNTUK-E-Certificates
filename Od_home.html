@@ -90,6 +90,7 @@
 			</div>
 		</section>
 	</main>
+	<div id="anchor" style="postion:relative;top:20px; visibility:hidden;">............</div>
 	<!-- End #main -->
 	<!-- ======= Footer ======= -->
 	<footer id="footer" class="footer">
@@ -121,7 +122,34 @@
         localStorage.setItem("currentPage", "Od_home.html");
 		username = localStorage.getItem("username");
 		document.getElementById("user").innerHTML = " " + username;
+		if(!isOnScreen($('#anchor'))){
+			document.getElementById("footer").style.position = 'relative';
+			document.getElementById("footer").style.top = '30px';
+		}
+		window.visualViewport.addEventListener("resize", browserResize);
 	}
+	
+	function browserResize(event) {
+		if(!isOnScreen($('#anchor'))){
+			document.getElementById("footer").style.position = 'relative';
+			document.getElementById("footer").style.top = '30px';
+		}
+		else{
+			document.getElementById("footer").style.position = 'absolute';
+			document.getElementById("footer").style.bottom = '0px';			
+			document.getElementById("footer").style.top = 'auto';
+		}
+	}
+
+
+	function isOnScreen(element)
+	{
+		var curPos = element.offset();
+		var curTop = curPos.top;
+		var screenHeight = $(window).height();
+		return (curTop > screenHeight) ? false : true;
+	}
+
 
 	function getDetails() {
 		name = "Bhogadi Vidhey";

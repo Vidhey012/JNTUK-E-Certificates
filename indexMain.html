@@ -173,7 +173,9 @@
 					title: "SUCCESS!",
 					text: "You are successfully logined into OD portal :)",
 					icon: "success",
-					timer: 3000,
+					timer: 2000,
+					showCancelButton: false,
+					showConfirmButton: false,
 				}).then(() => {					
 					localStorage.setItem("username", result.value.login);
 					window.location.assign("Od_home.html");
@@ -183,7 +185,9 @@
 					title: "Oops!",
 					text: "Invalid Username or Password :(",
 					icon: "error",
-					timer: 3000,
+					timer: 2000,
+					showCancelButton: false,
+					showConfirmButton: false,
 				});
 			}
 		});
@@ -215,8 +219,10 @@
 				Swal.fire({
 					title: "SUCCESS!",
 					text: "You are successfully logined into PC portal :)",
-					icon: "success",
-					timer: 3000,
+					icon: "success",					
+					timer: 2000,
+					showCancelButton: false,
+					showConfirmButton: false,
 				}).then(() => {
 					localStorage.setItem("username", result.value.login);
 					window.location.assign("Pc_home.html");
@@ -226,7 +232,9 @@
 					title: "Oops!",
 					text: "Invalid Username or Password :(",
 					icon: "error",
-					timer: 3000,
+					timer: 2000,
+					showCancelButton: false,
+					showConfirmButton: false,
 				});
 			}
 		});
