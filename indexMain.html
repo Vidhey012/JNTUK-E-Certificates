@@ -136,21 +136,6 @@
 	<!-- JQuery files -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script type="text/javascript">
-	window.onload = function onStartup() //------------------------------------------------------>>executed when page is loaded
-	{
-		const Toast = Swal.mixin({
-			toast: true,
-			position: 'top-end',
-			showConfirmButton: false,
-			timer: 10000,
-			timerProgressBar: true,
-			didOpen: (toast) => {
-				toast.addEventListener('mouseenter', Swal.stopTimer)
-				toast.addEventListener('mouseleave', Swal.resumeTimer)
-			}
-		});
-	}
-
 	function getOD() {
 		Swal.fire({
 			title: '<hr>OD Login Panel<hr>',
@@ -173,11 +158,22 @@
 				}
 			}
 		}).then((result) => {
-			Swal.fire(`
-			Login: ${result.value.login}
-			Password: ${result.value.password}
-		`.trim())
-		})
+			if(result.value.login == "qwerty" && result.value.password == "12345") {
+				Swal.fire({
+					title: "SUCCESS!",
+					text: "You are successfully logined into OD portal :)",
+					icon: "success",
+				}).then(() => {
+					window.location.assign("Od_home.html");
+				});
+			} else {
+				Swal.fire({
+					title: "Oops!",
+					text: "Invalid Username or Password :(",
+					icon: "error",
+				});
+			}
+		});
 	}
 
 	function getPC() {
@@ -202,11 +198,22 @@
 				}
 			}
 		}).then((result) => {
-			Swal.fire(`
-    Login: ${result.value.login}
-    Password: ${result.value.password}
-  `.trim())
-		})
+			if(result.value.login == "qwerty" && result.value.password == "12345") {
+				Swal.fire({
+					title: "SUCCESS!",
+					text: "You are successfully logined into PC portal :)",
+					icon: "success",
+				}).then(() => {
+					window.location.assign("Pc_home.html");
+				});
+			} else {
+				Swal.fire({
+					title: "Oops!",
+					text: "Invalid Username or Password :(",
+					icon: "error",
+				});
+			}
+		});
 	}
 	</script>
 </body>
