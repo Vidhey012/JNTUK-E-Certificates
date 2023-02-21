@@ -37,15 +37,12 @@ body {
 
 input[type=text] {
 	background-color: var(--color-primary);
-	;
-	border: none;
-	border-bottom: 2px solid #0DB8DE;
-	border-top: 0px;
-	border-radius: 0px;
+	border: 2px solid #0DB8DE;
+	border-radius: 5px;
 	font-weight: bold;
 	outline: 0;
 	margin-bottom: 20px;
-	padding-left: 0px;
+	padding-left: 20px;
 	color: #ECF0F5;
 }
 
@@ -88,10 +85,11 @@ label {
 }
 
 .form-control-label {
-	font-size: 10px;
+	font-size: 15px;
 	color: #ECF0F5;
 	font-weight: bold;
 	letter-spacing: 1px;
+	padding-left:15px;
 }
 
 .btn-outline-primary {
