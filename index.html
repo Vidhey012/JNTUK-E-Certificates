@@ -31,10 +31,11 @@
 <body>
     <iframe id="Frame" src="" style="height: 100%; width: 100%; border:none;"></iframe>
     <script type="text/javascript">
-        var file;
+        
         window.onload = function onStartup() //------------------------------------------------------>>executed when page is loaded
             {
-                document.getElementById("Frame").src = "indexMain.html";
+			    currentPage=localStorage.getItem("currentPage");
+                document.getElementById("Frame").src = currentPage;
             }
     </script>
 </body>

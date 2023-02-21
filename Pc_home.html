@@ -40,22 +40,19 @@
 			<a href="indexMain.html" class="logo d-flex align-items-center"> <img src="assets/img/title_logo.png" alt="">
 				<h1>JNTU Kakinada <span>.</span></h1>
 			</a>
+			<nav id="navbar" class="navbar">
+				<ul>
+					<li><a href="#"><b class="bi bi-person-circle" id="user"></b></a></li>
+					<li><a href="javascript:logout()">Logout</a></li>
+				</ul>
+			</nav>
+			<!-- .navbar --><i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i> <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
 		</div>
 	</header>
 	<!-- End Header -->
 	<main id="main">
 		<!-- ======= Breadcrumbs ======= -->
 		<div class="breadcrumbs">
-			<div class="page-header d-flex align-items-center" style="background-image: url('');">
-				<div class="container position-relative">
-					<div class="row d-flex justify-content-center">
-						<div class="col-lg-6 text-center">
-							<h2>PC PORTAL</h2>
-							<p>The following details are to be filled in order to generate your Provisional Certificate.</p>
-						</div>
-					</div>
-				</div>
-			</div>
 			<nav>
 				<div class="container">
 					<ol>
@@ -116,32 +113,34 @@
 	<script src="assets/js/swal1.js"></script>
 	<!-- JQuery files -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	
 	<script type="text/javascript">
-	
-	var name,fname,branch,year,gpa;
-	
-	function getDetails(){
-	
-	name="Bhogadi Vidhey";
-	fname="Bhogadi Lakshmana Swamy";
-	branch="CSE";
-	year="3rd year";
-	gpa="10.0";
-	
-	popup();
-	
+	var username;
+	var name, fname, branch, year, gpa;
+	window.onload = function onStartup() //------------------------------------------------------>>executed when page is loaded
+	{
+        localStorage.setItem("currentPage", "Pc_home.html");
+		username = localStorage.getItem("username");
+		document.getElementById("user").innerHTML = " " + username;
 	}
-	
-	function popup(){
-	
-	Swal.fire({
+
+	function getDetails() {
+		name = "Bhogadi Vidhey";
+		fname = "Bhogadi Lakshmana Swamy";
+		branch = "CSE";
+		year = "3rd year";
+		gpa = "10.0";
+		popup();
+	}
+
+	function popup() {
+		Swal.fire({
 			title: '<hr>Student Details<hr>',
-			html: `<table> <tr><th>Name</th><td><input type="text" id="name" class="swal2-input" placeholder="Student Name"></td></tr>
-			<tr><th>Father Name</th><td><input type="text" id="fname" class="swal2-input" placeholder="Father Name" disabled></td></tr>
-			<tr><th>Branch</th><td><input type="text" id="branch" class="swal2-input" placeholder="Branch Name" disabled></td></tr>
-			<tr><th>Year</th><td><input type="text" id="year" class="swal2-input" placeholder="Year" disabled></td></tr>
-			<tr><th>10<sup>th</sup> GPA</th><td><input type="text" id="gpa" class="swal2-input" placeholder="10th GPA" disabled></td></tr></table>`,
+			width: 1000,
+			html: `<table> <tr><th>Name</th><td><input style="width:700px" type="text" id="name" class="swal2-input" placeholder="Student Name"></td></tr>
+			<tr><th>Father Name</th><td><input style="width:700px" type="text" id="fname" class="swal2-input" placeholder="Father Name" disabled></td></tr>
+			<tr><th>Branch</th><td><input style="width:700px" type="text" id="branch" class="swal2-input" placeholder="Branch Name" disabled></td></tr>
+			<tr><th>Year</th><td><input style="width:700px" type="text" id="year" class="swal2-input" placeholder="Year" disabled></td></tr>
+			<tr><th>10<sup>th</sup> GPA</th><td><input style="width:700px" type="text" id="gpa" class="swal2-input" placeholder="10th GPA" disabled></td></tr></table>`,
 			confirmButtonText: 'Print',
 			background: '#008374',
 			color: '#ffffff',
@@ -151,7 +150,7 @@
 				document.getElementById("fname").value = fname;
 				document.getElementById("branch").value = branch;
 				document.getElementById("year").value = year;
-				document.getElementById("gpa").value = gpa;			
+				document.getElementById("gpa").value = gpa;
 			},
 			preConfirm: () => {
 				const name = Swal.getPopup().querySelector('#name').value;
@@ -170,20 +169,51 @@
 					gpa: gpa
 				}
 			}
-		}).then((result) => {print(result.value.name,result.value.fname,result.value.branch,result.value.year,result.value.gpa)});
-	
+		}).then((result) => {
+			print(result.value.name, result.value.fname, result.value.branch, result.value.year, result.value.gpa)
+		});
 	}
-	
-	function print(name,fname,branch,year,gpa){
-	
+
+	function print(name, fname, branch, year, gpa) {
 		Swal.fire({
-					title: "Printed Successfully!",
-					html: `<div align="center"><table border="2" style="text-align:center;"><tr><th>Name</th><td>`+name+`</td></tr><tr><th>Father Name</th><td>`+fname+`</td></tr><tr><th>Branch</th><td>`+branch+`</td></tr><tr><th>Year</th><td>`+year+`</td></tr><tr><th>10th GPA</th><td>`+gpa+`</td></tr></table></div>`,
-					icon: "success",
-				});
-	
+			title: "Printed Successfully!",
+			html: `<div align="center"><table border="2" style="text-align:center;"><tr><th>Name</th><td>` + name + `</td></tr><tr><th>Father Name</th><td>` + fname + `</td></tr><tr><th>Branch</th><td>` + branch + `</td></tr><tr><th>Year</th><td>` + year + `</td></tr><tr><th>10th GPA</th><td>` + gpa + `</td></tr></table></div>`,
+			icon: "success",
+		});
 	}
-	
+
+	function logout() {
+		const swalWithBootstrapButtons = Swal.mixin({
+			customClass: {
+				confirmButton: 'btn btn-success',
+				cancelButton: 'btn btn-danger'
+			},
+			buttonsStyling: false
+		})
+		swalWithBootstrapButtons.fire({
+			title: 'Are you sure ?',
+			text: "Do you really want to logout ?",
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonText: 'Yes, logout !',
+			cancelButtonText: 'No, cancel !',
+			reverseButtons: true
+		}).then((result) => {
+			if(result.isConfirmed) {
+				Swal.fire({
+					title: "LOGOUT SUCCESS!",
+					icon: "success",
+					timer: 1000,
+					showCancelButton: false,
+					showConfirmButton: false,
+				}).then(() => {
+					localStorage.setItem("username", " ");
+					localStorage.setItem("currentPage", "indexMain.html");
+					window.location.assign("index.html");
+				});
+			} else if(result.dismiss === Swal.DismissReason.cancel) {}
+		})
+	}
 	</script>
 </body>
 
