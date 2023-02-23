@@ -129,6 +129,14 @@
 		window.visualViewport.addEventListener("resize", browserResize);
 	}
 	
+	window.onpopstate = function(event) { 
+  		if(event){
+			alert("Hello");
+ 		 }
+ 		 else{
+ 		 }
+	}	
+		
 	function browserResize(event) {
 		if(!isOnScreen($('#anchor'))){
 			document.getElementById("footer").style.position = 'relative';
