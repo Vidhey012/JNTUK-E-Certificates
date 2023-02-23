@@ -119,7 +119,7 @@
 	var name, fname, branch, year, gpa;
 	window.onload = function onStartup() //------------------------------------------------------>>executed when page is loaded
 	{
-        localStorage.setItem("currentPage", "Od_home.html");
+        	localStorage.setItem("currentPage", "Od_home.html");
 		username = localStorage.getItem("username");
 		document.getElementById("user").innerHTML = " " + username;
 		if(!isOnScreen($('#anchor'))){
@@ -127,7 +127,14 @@
 			document.getElementById("footer").style.top = '30px';
 		}
 		window.visualViewport.addEventListener("resize", browserResize);
+		setTimeout("preventBack()", 0);
 	}
+		
+	function preventBack() {
+            window.history.forward(); 
+        }
+		
+	window.onunload = function () { null };
 		
 	function browserResize(event) {
 		if(!isOnScreen($('#anchor'))){
