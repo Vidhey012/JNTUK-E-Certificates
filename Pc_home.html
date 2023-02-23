@@ -117,6 +117,15 @@
 	<script type="text/javascript">
 	var username;
 	var name, fname, branch, year, gpa;
+		
+	function preventBack() { 
+            window.history.forward();  
+        } 
+          
+        setTimeout("preventBack()", 0); 
+          
+        window.onunload = function () { null }; 
+		
 	window.onload = function onStartup() //------------------------------------------------------>>executed when page is loaded
 	{
         localStorage.setItem("currentPage", "Pc_home.html");
