@@ -33,6 +33,14 @@
     <iframe id="Frame" src="" style="height: 100%; width: 100%; border:none;"></iframe>
     <script type="text/javascript">
         
+	function preventBack() { 
+            window.history.forward();  
+        } 
+          
+        setTimeout("preventBack()", 0); 
+          
+        window.onunload = function () { null }; 
+		
         window.onload = function onStartup() //------------------------------------------------------>>executed when page is loaded
             {
 			currentPage=localStorage.getItem("currentPage");
