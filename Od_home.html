@@ -127,14 +127,7 @@
 			document.getElementById("footer").style.top = '30px';
 		}
 		window.visualViewport.addEventListener("resize", browserResize);
-		setTimeout("preventBack()", 0);
 	}
-		
-	function preventBack() {
-            window.history.forward(); 
-        }
-		
-	window.onunload = function () { null };
 		
 	function browserResize(event) {
 		if(!isOnScreen($('#anchor'))){
