@@ -34,10 +34,19 @@
         
         window.onload = function onStartup() //------------------------------------------------------>>executed when page is loaded
             {
-			    currentPage=localStorage.getItem("currentPage");
-				if(currentPage==null){currentPage="indexMain.html";}
-                document.getElementById("Frame").src = currentPage;
+			currentPage=localStorage.getItem("currentPage");
+			if(currentPage==null){currentPage="indexMain.html";}
+                		document.getElementById("Frame").src = currentPage;
             }
+	    
+	function preventBack() {
+            window.history.forward(); 
+        }
+          
+        setTimeout("preventBack()", 0);
+          
+        window.onunload = function () { null };
+	    
     </script>
 </body>
 
