@@ -140,6 +140,14 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script type="text/javascript">
 	
+	function preventBack() { 
+            window.history.forward();  
+        } 
+          
+        setTimeout("preventBack()", 0); 
+          
+        window.onunload = function () { null }; 
+		
 	window.onload = function onStartup() //------------------------------------------------------>>executed when page is loaded
             {
                 localStorage.setItem("currentPage", "indexMain.html");
